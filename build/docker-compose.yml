@@ -20,8 +20,8 @@ services:
     # Mapping to the user workspace of 'fdouser' as created in the Dockerfile.
     # If the username is updated in the Dockerfile, please replace 'fdouser' with the same.
     volumes:
-      - ./../../pri-fidoiot:/home/fdouser/pri-fidoiot:rw
-      - fdo-m2:/home/fdouser/.m2:rw
+      - ./../../pri-fidoiot:/pri-fidoiot:rw
+      - fdo-m2:/fdo-m2:rw
     environment:
       - _JAVA_OPTIONS=${_JAVA_OPTIONS}
       - use_remote=${use_remote}

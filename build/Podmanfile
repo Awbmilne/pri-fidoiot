@@ -17,12 +17,8 @@ RUN curl -sS \
     ln -s /var/local/apache-maven-${MVN_VERSION}/bin/mvnDebug /usr/local/bin/mvnDebug && \
     ln -s /var/local/apache-maven-${MVN_VERSION}/bin/mvn /usr/local/bin/mvn
 
-# Create a user 'fdouser'. If the user name is updated, please update the same in docker-compose.yaml.
-RUN useradd -ms /bin/bash fdouser
-RUN mkdir -p /home/fdouser/pri-fidoiot/ ; chown -R fdouser:fdouser /home/fdouser/pri-fidoiot/
-RUN mkdir -p /home/fdouser/.m2/; chown -R fdouser:fdouser /home/fdouser/.m2
-USER fdouser
+RUN mkdir /pri-fidoiot/ \
+    && mkdir /fdo-m2/
 
-WORKDIR /home/fdouser/pri-fidoiot/
+WORKDIR /pri-fidoiot/
 ENTRYPOINT ["./build/build.sh"]
-
